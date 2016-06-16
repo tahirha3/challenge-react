@@ -15,26 +15,26 @@ var tabList = [
 ];
 
 var Content = React.createClass({
-    render: function(){
-        return(
+    render: function () {
+        return (
             <div className="slds-align--absolute-center slds-p-around--medium">
                 {this.props.currentTab === 1 ?
-                <div>
-                    <Leads />
-                </div>
-                :null}
+                    <div>
+                        <Leads />
+                    </div>
+                    : null}
 
                 {this.props.currentTab === 2 ?
-                <div>
-                    <Accounts />
-                </div>
-                :null}
+                    <div>
+                        <Accounts />
+                    </div>
+                    : null}
 
                 {this.props.currentTab === 3 ?
-                <div>
-                    <Appointments />
-                </div>
-                :null}
+                    <div>
+                        <Appointments />
+                    </div>
+                    : null}
 
             </div>
         );
@@ -42,37 +42,38 @@ var Content = React.createClass({
 });
 
 let App = React.createClass({
-  getInitialState: function () {        
-      return {
-          tabList: tabList,
-          currentTab: 1
-      };
-  },
+    getInitialState: function () {
+        return {
+            tabList: tabList,
+            currentTab: 1
+        };
+    },
 
-  changeTab: function(tab) {
-      this.setState({ currentTab: tab.id });
-  },
-  render() {
-    return(
-      <div>
-        <div className="slds-grid slds-grid--vertical-align-center slds-grid--align-center">
-          <div className="slds-text-heading--large slds-p-around--medium">Simple CRM</div>
-        </div>
-        <Tabs
-            currentTab={this.state.currentTab}
-            tabList={this.state.tabList}
-            changeTab={this.changeTab}
-        />
-        <Content currentTab={this.state.currentTab} />
-      </div>
-    );}
+    changeTab: function (tab) {
+        this.setState({ currentTab: tab.id });
+    },
+    render() {
+        return (
+            <div>
+                <div className="slds-grid slds-grid--vertical-align-center slds-grid--align-center">
+                    <div className="slds-text-heading--large slds-p-around--medium">Simple CRM</div>
+                </div>
+                <Tabs
+                    currentTab={this.state.currentTab}
+                    tabList={this.state.tabList}
+                    changeTab={this.changeTab}
+                    />
+                <Content currentTab={this.state.currentTab} />
+            </div>
+        );
+    }
 });
 export default App;
 
 let reactElement = document.getElementById('react')
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  reactElement
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    reactElement
 );

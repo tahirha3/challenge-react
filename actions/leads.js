@@ -1,13 +1,13 @@
-export function addLead(name, phone){
+export function addLead(name, phone) {
   return {
     type: 'addLead',
     name,
     phone,
-    logs:[]
+    logs: []
   }
 }
 
-export function deleteLead(index){
+export function deleteLead(index) {
   return {
     type: 'deleteLead',
     index
