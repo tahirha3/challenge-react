@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { addLead, deleteLead } from '../actions/leads'
-import { addCustomer } from '../actions/customers'
+import { addAccount } from '../actions/accounts'
 import Logs from './logs'
+import makeAppointment from './makeAppointment'
 
 const Leads = ({leads, dispatch}) => (
   <div>
@@ -44,11 +45,12 @@ const Leads = ({leads, dispatch}) => (
                   <td className="slds-text-align--center">{lead.phone}</td>
                   <td>
                     <div className="slds-button-group" role="group">
-                      <Logs />
+                      <Logs logs={lead.logs ? lead.logs :null}/>
+                      <makeAppointment name={lead.name} phone={lead.phone}/>
                       <a className="slds-button slds-button--neutral" onClick={e => {
-                          dispatch(addCustomer(lead.name, lead.phone));
+                          dispatch(addAccount(lead.name, lead.phone, lead.logs));
                           dispatch(deleteLead(index));
-                        }}>Make Customer</a>
+                        }}>Make Account</a>
                       <a className="slds-button slds-button--destructive" onClick={e => {
                           dispatch(deleteLead(index))
                         }}>Delete</a>

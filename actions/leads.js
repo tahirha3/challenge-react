@@ -2,7 +2,8 @@ export function addLead(name, phone){
   return {
     type: 'addLead',
     name,
-    phone
+    phone,
+    logs:[]
   }
 }
 

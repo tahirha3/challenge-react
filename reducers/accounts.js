@@ -7,9 +7,9 @@ let dummyData = {
 
 export default function customers (state = Immutable.List([dummyData]), action) {
   switch(action.type) {
-    case 'addCustomer':
-      return state.push({name:action.name, phone:action.phone})
-    case 'deleteCustomer':
+    case 'addAccount':
+      return state.push({name:action.name, phone:action.phone, logs:action.logs})
+    case 'deleteAccount':
       return state.filter((lead, index) => index !== action.index)
     default:
       return state
