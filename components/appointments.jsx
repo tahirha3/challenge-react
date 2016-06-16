@@ -1,46 +1,52 @@
 import React from 'react';
-
-let Appointments = React.createClass({ 
-
-  render() {
-    return(
-      <div>
-        <div className="slds-card">
-          <div className="slds-card__header slds-grid">
-            <div className="slds-media slds-media--center slds-has-flexi-truncate">
-              <div className="slds-media__body slds-truncate">
-                <a href="javascript:void(0);" className="slds-text-link--reset">
-                  <span className="slds-text-heading--small">Appointments (1)</span>
-                </a>
-              </div>
+import { connect } from 'react-redux'
+import { deleteAppointment } from '../actions/appointments'
+const Appointments = ({appointments, dispatch}) => (
+  <div>
+      <div className="slds-card">
+        <div className="slds-card__header slds-grid">
+          <div className="slds-media slds-media--center slds-has-flexi-truncate">
+            <div className="slds-media__body slds-truncate">
+              <a href="javascript:void(0);" className="slds-text-link--reset">
+                <span className="slds-text-heading--small">Appointments ({appointments.size})</span>
+              </a>
             </div>
-            <div className="slds-no-flex">
-              <button className="slds-button slds-button--neutral slds-col--bump-left">New</button>
-            </div>
-          </div>
-          <div className="slds-card__body">
-            <table className="slds-table slds-table--bordered slds-no-row-hover slds-table--cell-buffer">
-              <thead>
-                <tr className="slds-text-heading--label">
-                  <th scope="col">Name</th>
-                  <th scope="col">Phone</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="slds-hint-parent">
-                  <th scope="row">
-                    <div className="slds-truncate"><a href="javascript:void(0);">Adam Choi</a></div>
-                  </th>
-                  <td>Company One</td>
-                  <td>Director of Operations</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
+        <div className="slds-card__body">
+          <table className="slds-table slds-table--bordered slds-no-row-hover slds-table--cell-buffer">
+            <thead>
+              <tr className="slds-text-heading--label">
+                <th className="slds-text-align--center" scope="col">Time</th>
+                <th className="slds-text-align--center" scope="col">Name</th>
+                <th className="slds-text-align--center" scope="col">Phone</th>
+                <th className="slds-text-align--center" scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {appointments.map((appointment, index) => 
+                <tr className="slds-hint-parent" key={index}>
+                  <td className="slds-text-align--center">{appointment.time}</td> 
+                  <td className="slds-text-align--center">{appointment.name}</td> 
+                  <td className="slds-text-align--center">{appointment.phone}</td>
+                  <td>
+                    <div className="slds-button-group" role="group">
+                      <a className="slds-button slds-button--destructive" onClick={e => {
+                          dispatch(deleteAppointment(index))
+                        }}>Delete</a>
+                    </div>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
-    );}
+    </div>
+)
+
+const mapStateToProps = state => ({
+    appointments: state.appointments
 });
 
-export default Appointments;
+export default connect(mapStateToProps)(Appointments)
