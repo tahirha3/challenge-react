@@ -2,7 +2,6 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import store from '../store'
-import Todos from './todos'
 import Leads from './leads'
 import Customers from './customers'
 import Appointments from './appointments'
@@ -12,8 +11,7 @@ import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-s
 var tabList = [
     { 'id': 1, 'name': 'Leads', 'url': '/leads' },
     { 'id': 2, 'name': 'Customers', 'url': '/customers' },
-    { 'id': 3, 'name': 'Appointments', 'url': '/appointments' },
-    { 'id': 4, 'name': 'Todos', 'url': '/todos' }
+    { 'id': 3, 'name': 'Appointments', 'url': '/appointments' }
 ];
 
 var Content = React.createClass({
@@ -35,12 +33,6 @@ var Content = React.createClass({
                 {this.props.currentTab === 3 ?
                 <div>
                     <Appointments />
-                </div>
-                :null}
-
-                {this.props.currentTab === 4 ?
-                <div>
-                    <Todos />
                 </div>
                 :null}
 
