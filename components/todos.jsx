@@ -20,10 +20,9 @@ const Todos = ({todos, dispatch}) => (
   </div>
 )
 
-function mapStateToProps(todos) {
-  return {
-    todos
-  }
-}
+const mapStateToProps = state => ({
+    todos: state.todos
+});
 
 export default connect(mapStateToProps)(Todos)
+
