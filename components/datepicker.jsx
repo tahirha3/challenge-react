@@ -201,7 +201,7 @@ let DatePicker = React.createClass({
                             <td colSpan="7" role="gridcell"><a onClick={e => {
                                     this.props.dispatch(addAppointment(this.props.name,this.props.phone,this.getDate()));
                                     this.toggle();
-                                }} className="slds-show--inline-block slds-p-bottom--x-small">Book</a></td>
+                                }} className="slds-button slds-button--brand slds-col--bump-left">Book</a></td>
                         </tr>
                         </tbody>
                     </table>
@@ -213,9 +213,7 @@ let DatePicker = React.createClass({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    bookAppoint: (name, phone, time) => {
-      dispatch(addAppointment(name, phone, time));
-    }
+   
   }
 }
 
