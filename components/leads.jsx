@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addLead, deleteLead } from '../actions/leads'
 import { addAccount } from '../actions/accounts'
 import Logs from './logs'
-import makeAppointment from './makeAppointment'
+import datepicker from './datepicker'
 
 const Leads = ({leads, dispatch}) => (
   <div>
@@ -44,13 +44,14 @@ const Leads = ({leads, dispatch}) => (
                   <td className="slds-text-align--center">{lead.name}</td>
                   <td className="slds-text-align--center">{lead.phone}</td>
                   <td>
+                  <datepicker />
                     <div className="slds-button-group" role="group">
-                      <Logs logs={lead.logs ? lead.logs : null}/>
-                      <makeAppointment name={lead.name} phone={lead.phone}/>
+                      <Logs index={index} logs={lead.logs ? lead.logs : null}/>
                       <a className="slds-button slds-button--neutral" onClick={e => {
                         dispatch(addAccount(lead.name, lead.phone, lead.logs));
                         dispatch(deleteLead(index));
                       } }>Make Account</a>
+                      
                       <a className="slds-button slds-button--destructive" onClick={e => {
                         dispatch(deleteLead(index))
                       } }>Delete</a>

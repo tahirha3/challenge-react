@@ -1,16 +1,19 @@
 import React from 'react'
 
 let Logs = React.createClass({
-
+  getInitialState: function () {
+        return {
+            toggle: 0
+        };
+    },
+    toggle:function () {
+        this.setState({ toggle: ~this.state.toggle });
+    },
   render() {
     return (
       <div>
-        <a className="slds-button slds-button--neutral" onClick={e => {
-          document.getElementById("modal").classList.remove('slds-hide');
-          document.getElementById("background").classList.remove('slds-backdrop--close');
-          document.getElementById("background").classList.add('slds-backdrop--open');
-        } }>Call Logs</a>
-        <div id="modal" className="slds-modal slds-fade-in-open slds-hide" role="dialog">
+        <a className="slds-button slds-button--neutral" onClick={e => {this.toggle();}}>Call Logs</a>
+        <div className={this.state.toggle ? 'slds-modal slds-fade-in-open' : 'slds-modal slds-fade-in-open slds-hide'} role="dialog">
           <div className="slds-modal__container">
             <div className="slds-modal__header">
               <h2 className="slds-text-heading--medium"> Call Logs</h2>
@@ -49,15 +52,11 @@ let Logs = React.createClass({
               </div>
             </div>
             <div className="slds-modal__footer">
-              <button className="slds-button slds-button--neutral" onClick={e => {
-                document.getElementById("modal").classList.add('slds-hide');
-                document.getElementById("background").classList.remove('slds-backdrop--open');
-                document.getElementById("background").classList.add('slds-backdrop--close');
-              } }>Close</button>
+              <button className="slds-button slds-button--neutral" onClick={e => {this.toggle();}}>Close</button>
             </div>
           </div>
         </div>
-        <div id="background" className="slds-backdrop slds-backdrop--close"></div>
+        <div className={this.state.toggle ? 'slds-backdrop slds-backdrop--open' : 'slds-backdrop slds-backdrop--close'}></div>
       </div>
     );
   }

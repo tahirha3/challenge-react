@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { deleteAppointment } from '../actions/appointments'
+
 const Appointments = ({appointments, dispatch}) => (
   <div>
     <div className="slds-card">

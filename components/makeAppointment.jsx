@@ -1,35 +1,116 @@
 import React from 'react'
 
 let makeAppointment = React.createClass({
-
+  
   render() {
     return(
       <div>
-        <a className="slds-button slds-button--neutral" onClick={e => {
-              document.getElementById("Apointmodal").classList.remove('slds-hide');
-              document.getElementById("Apointbackground").classList.remove('slds-backdrop--close');
-              document.getElementById("Apointbackground").classList.add('slds-backdrop--open');
-          }}>Make Appointment</a>
-          <div id="Apointmodal" className="slds-modal slds-fade-in-open slds-hide" role="dialog">
-            <div className="slds-modal__container">
-              <div className="slds-modal__header">
-                <h2 className="slds-text-heading--medium">Make an Appointment</h2>
-              </div>
-              <div className="slds-modal__content slds-p-around--medium">
-                <div>
-                  yay
-                </div>
-              </div>
-              <div className="slds-modal__footer">
-                <button className="slds-button slds-button--neutral" onClick={e => {
-                    document.getElementById("Apointmodal").classList.add('slds-hide');
-                    document.getElementById("Apointbackground").classList.remove('slds-backdrop--open');
-                    document.getElementById("Apointbackground").classList.add('slds-backdrop--close');
-                }}>Close</button>
-              </div>
+        <button className="slds-button slds-button--icon-border-filled" aria-haspopup="true">
+            Make an Appointment
+            <span className="slds-assistive-text">Show More</span>
+          </button>
+          <div className="slds-dropdown slds-dropdown--left slds-dropdown--small">
+            <div className="slds-dropdown__header">
+              <span className="slds-text-heading--label">Day</span>
             </div>
+            <ul className="dropdown__list" role="menu">
+              <li className="slds-dropdown__item">
+                <fieldset className="slds-form-element">
+                  <div className="slds-form-element__control">
+                    <div className="slds-radio--button-group">
+                      <label className="slds-button slds-radio--button" for="monday">
+                        <input name="radio" type="radio" id="monday" />
+                        <span className="slds-radio--faux">Mon</span>
+                      </label>
+                      <label className="slds-button slds-radio--button" for="tuesday">
+                        <input name="radio" type="radio" id="tuesday" />
+                        <span className="slds-radio--faux">Tue</span>
+                      </label>
+                      <label className="slds-button slds-radio--button" for="wednesday">
+                        <input name="radio" type="radio" id="wednesday" />
+                        <span className="slds-radio--faux">Wed</span>
+                      </label>
+                      <label className="slds-button slds-radio--button" for="thursday">
+                        <input name="radio" type="radio" id="thursday" />
+                        <span className="slds-radio--faux">Thu</span>
+                      </label>
+                      <label className="slds-button slds-radio--button" for="friday">
+                        <input name="radio" type="radio" id="friday" />
+                        <span className="slds-radio--faux">Fri</span>
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </li>
+            </ul>
+            <div className="slds-dropdown__header">
+              <span className="slds-text-heading--label">Time</span>
+            </div>
+            <ul className="dropdown__list " role="menu">
+              <li className="slds-dropdown__item">
+                <fieldset className="slds-form-element">
+                  <div className="slds-form-element__control slds-text-align--center">
+                    <ul className="slds-radio--button-group">
+                      <li>
+                      <label className="slds-button slds-radio--button" for="monday">
+                        <input name="radio" type="radio" id="monday" />
+                        <span className="slds-radio--faux">8am</span>
+                      </label>
+                      <label className="slds-button slds-radio--button" for="tuesday">
+                        <input name="radio" type="radio" id="tuesday" />
+                        <span className="slds-radio--faux">12pm</span>
+                      </label>
+                      <label className="slds-button slds-radio--button" for="wednesday">
+                        <input name="radio" type="radio" id="wednesday" />
+                        <span className="slds-radio--faux">4pm</span>
+                      </label>
+                      </li>
+                      <li>
+                      <label className="slds-button slds-radio--button" for="monday">
+                        <input name="radio" type="radio" id="monday" />
+                        <span className="slds-radio--faux">9am</span>
+                      </label>
+                      <label className="slds-button slds-radio--button" for="tuesday">
+                        <input name="radio" type="radio" id="tuesday" />
+                        <span className="slds-radio--faux">1pm</span>
+                      </label>
+                      <label className="slds-button slds-radio--button" for="wednesday">
+                        <input name="radio" type="radio" id="wednesday" />
+                        <span className="slds-radio--faux">5pm</span>
+                      </label>
+                      </li>
+                      <li>
+                      <label className="slds-button slds-radio--button" for="monday">
+                        <input name="radio" type="radio" id="monday" />
+                        <span className="slds-radio--faux">10am</span>
+                      </label>
+                      <label className="slds-button slds-radio--button" for="tuesday">
+                        <input name="radio" type="radio" id="tuesday" />
+                        <span className="slds-radio--faux">2pm</span>
+                      </label>
+                      </li>
+                      <li>
+                      <label className="slds-button slds-radio--button" for="monday">
+                        <input name="radio" type="radio" id="monday" />
+                        <span className="slds-radio--faux">11am</span>
+                      </label>
+                      <label className="slds-button slds-radio--button" for="tuesday">
+                        <input name="radio" type="radio" id="tuesday" />
+                        <span className="slds-radio--faux">3pm</span>
+                      </label>
+                      </li> 
+                    </ul>
+                  </div>
+                </fieldset>
+              </li>
+              <li className="slds-dropdown__item">
+                <div className="slds-button-group" role="group">
+                  <button className="slds-button slds-button--neutral">Close</button>
+                  <button className="slds-button slds-button--neutral">Save</button>
+                </div>
+              </li>
+            </ul>
           </div>
-          <div id="Apointbackground" className="slds-backdrop slds-backdrop--close"></div>
       </div>
     );}
 });
