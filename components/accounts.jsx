@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { addAccount, deleteAccount } from '../actions/accounts'
 import Logs from './logs'
+import EditPhone from './editphone'
 
 const Accounts = ({accounts, dispatch}) => (
   <div>
@@ -28,7 +29,7 @@ const Accounts = ({accounts, dispatch}) => (
             {accounts.map((account, index) =>
               <tr className="slds-hint-parent" key={index}>
                 <td className="slds-text-align--center">{account.name}</td>
-                <td className="slds-text-align--center">{account.phone}</td>
+                <EditPhone phone={account.phone}/>
                 <td>
                   <div className="slds-button-group" role="group">
                     <Logs logs={account.logs ? account.logs : null}/>
