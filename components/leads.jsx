@@ -51,10 +51,10 @@ const Leads = ({leads, dispatch}) => (
                         dispatch(addAccount(lead.name, lead.phone, lead.logs));
                         dispatch(deleteLead(index));
                       } }>Make Account</a>
-                      
+
                       <a className="slds-button slds-button--destructive" onClick={e => {
                         dispatch(deleteLead(index))
-                      }}>Delete</a>
+                      } }>Delete</a>
                     </div>
                   </td>
                 </tr>

@@ -1,55 +1,55 @@
 import React from 'react'
 
 let Logs = React.createClass({
-    getInitialState: function () {
-        return {
-            toggle: 0,
-            logs:this.props.logs,
-            log:''
-        };
-    },
-    handleChange(e) {
-      this.setState({ log: e.target.value });
-      if(e.keyCode == 13){
-        this.newLog();
-      }
-    },
-    toggle:function () {
-        this.setState({ toggle: ~this.state.toggle });
-    },
-    newLog:function () {
-      if (this.state.log != '' ) {
-        var currentdate = new Date(); 
-        var datetime = currentdate.getDate() + "/"
-                        + (currentdate.getMonth()+1)  + "/" 
-                        + currentdate.getFullYear() + " @ "  
-                        + currentdate.getHours() + ":"  
-                        + currentdate.getMinutes() + ":" 
-                        + currentdate.getSeconds();
-        this.props.logs.push({ log: this.state.log, time: datetime });
-        this.setState({ log: ''});
-        this.setState({ logs: this.props.logs });
-      }
-    },
+  getInitialState: function () {
+    return {
+      toggle: 0,
+      logs: this.props.logs,
+      log: ''
+    };
+  },
+  handleChange(e) {
+    this.setState({ log: e.target.value });
+    if (e.keyCode == 13) {
+      this.newLog();
+    }
+  },
+  toggle: function () {
+    this.setState({ toggle: ~this.state.toggle });
+  },
+  newLog: function () {
+    if (this.state.log != '') {
+      var currentdate = new Date();
+      var datetime = currentdate.getDate() + "/"
+        + (currentdate.getMonth() + 1) + "/"
+        + currentdate.getFullYear() + " @ "
+        + currentdate.getHours() + ":"
+        + currentdate.getMinutes() + ":"
+        + currentdate.getSeconds();
+      this.props.logs.push({ log: this.state.log, time: datetime });
+      this.setState({ log: '' });
+      this.setState({ logs: this.props.logs });
+    }
+  },
   render() {
     return (
       <div>
-        <a className="slds-button slds-button--neutral" onClick={e => {this.toggle();}}>Call Logs</a>
+        <a className="slds-button slds-button--neutral" onClick={e => { this.toggle(); } }>Call Logs</a>
         <div className={this.state.toggle ? 'slds-modal slds-fade-in-open' : 'slds-modal slds-fade-in-open slds-hide'} role="dialog">
           <div className="slds-modal__container">
             <div className="slds-modal__header">
               <h2 className="slds-text-heading--medium">Call Logs</h2>
             </div>
             <div className="slds-modal__content slds-p-around--medium">
-                <div className="slds-publisher slds-publisher--discussion slds-m-around--medium">
-                  <input type="text" value={this.state.log} onChange={ 
-                    this.handleChange } onKeyUp={this.handleChange} className="slds-publisher__input slds-textarea slds-text-longform" placeholder="Enter Log here…"></input>
-                  <div className="slds-publisher__actions slds-grid slds-grid--align-spread">
-                    <button className="slds-button slds-button--brand" onClick={e => {
-                        this.newLog();
-                      }}>Log</button>
+              <div className="slds-publisher slds-publisher--discussion slds-m-around--medium">
+                <input type="text" value={this.state.log} onChange={
+                  this.handleChange } onKeyUp={this.handleChange} className="slds-publisher__input slds-textarea slds-text-longform" placeholder="Enter Log here…"></input>
+                <div className="slds-publisher__actions slds-grid slds-grid--align-spread">
+                  <button className="slds-button slds-button--brand" onClick={e => {
+                    this.newLog();
+                  } }>Log</button>
                 </div>
-            </div>
+              </div>
               <div>
                 <ul>
                   {this.state.logs ? this.state.logs.map((item, index) =>
@@ -82,7 +82,7 @@ let Logs = React.createClass({
               </div>
             </div>
             <div className="slds-modal__footer">
-              <button className="slds-button slds-button--neutral" onClick={e => {this.toggle();}}>Close</button>
+              <button className="slds-button slds-button--neutral" onClick={e => { this.toggle(); } }>Close</button>
             </div>
           </div>
         </div>
