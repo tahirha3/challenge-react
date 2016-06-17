@@ -1,7 +1,7 @@
 import Immutable from 'immutable'
 
 let dummyData = {
-  time: "9:00pm 22 March 2016",
+  time: "10 March 2016",
   name:"Dummy Appointment",
   phone: "123-456-7890"
 };

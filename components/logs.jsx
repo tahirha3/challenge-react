@@ -1,7 +1,7 @@
 import React from 'react'
 
 let Logs = React.createClass({
-  getInitialState: function () {
+    getInitialState: function () {
         return {
             toggle: 0,
             logs:this.props.logs,
@@ -48,7 +48,6 @@ let Logs = React.createClass({
                       }}>Log</button>
                 </div>
             </div>
-            
               <div>
                 <ul>
                   {this.state.logs ? this.state.logs.map((item, index) =>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addLead, deleteLead } from '../actions/leads'
 import { addAccount } from '../actions/accounts'
 import Logs from './logs'
-import datepicker from './datepicker'
+import DatePicker from './datepicker'
 
 const Leads = ({leads, dispatch}) => (
   <div>
@@ -44,9 +44,9 @@ const Leads = ({leads, dispatch}) => (
                   <td className="slds-text-align--center">{lead.name}</td>
                   <td className="slds-text-align--center">{lead.phone}</td>
                   <td>
-                  <datepicker />
                     <div className="slds-button-group" role="group">
                       <Logs logs={lead.logs ? lead.logs : null}/>
+                      <DatePicker name={lead.name} phone={lead.phone} />
                       <a className="slds-button slds-button--neutral" onClick={e => {
                         dispatch(addAccount(lead.name, lead.phone, lead.logs));
                         dispatch(deleteLead(index));
@@ -67,7 +67,7 @@ const Leads = ({leads, dispatch}) => (
   </div>
 )
 
-const mapStateToProps = state => ({
+let mapStateToProps = state => ({
   leads: state.leads
 });
 
