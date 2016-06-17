@@ -18,16 +18,18 @@ let Logs = React.createClass({
         this.setState({ toggle: ~this.state.toggle });
     },
     newLog:function () {
-      var currentdate = new Date(); 
-      var datetime = currentdate.getDate() + "/"
-                      + (currentdate.getMonth()+1)  + "/" 
-                      + currentdate.getFullYear() + " @ "  
-                      + currentdate.getHours() + ":"  
-                      + currentdate.getMinutes() + ":" 
-                      + currentdate.getSeconds();
-      this.props.logs.push({ log: this.state.log, time: datetime });
-      this.setState({ log: ''});
-      this.setState({ logs: this.props.logs });
+      if (this.state.log != '' ) {
+        var currentdate = new Date(); 
+        var datetime = currentdate.getDate() + "/"
+                        + (currentdate.getMonth()+1)  + "/" 
+                        + currentdate.getFullYear() + " @ "  
+                        + currentdate.getHours() + ":"  
+                        + currentdate.getMinutes() + ":" 
+                        + currentdate.getSeconds();
+        this.props.logs.push({ log: this.state.log, time: datetime });
+        this.setState({ log: ''});
+        this.setState({ logs: this.props.logs });
+      }
     },
   render() {
     return (
