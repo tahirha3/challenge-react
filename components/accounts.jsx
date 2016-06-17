@@ -31,7 +31,7 @@ const Accounts = ({accounts, dispatch}) => (
                 <td className="slds-text-align--center">{account.phone}</td>
                 <td>
                   <div className="slds-button-group" role="group">
-                    <Logs />
+                    <Logs logs={account.logs ? account.logs : null}/>
                     <a className="slds-button slds-button--destructive" onClick={e => {
                       dispatch(deleteAccount(index))
                     } }>Delete</a>

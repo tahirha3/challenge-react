@@ -46,7 +46,7 @@ const Leads = ({leads, dispatch}) => (
                   <td>
                   <datepicker />
                     <div className="slds-button-group" role="group">
-                      <Logs index={index} logs={lead.logs ? lead.logs : null}/>
+                      <Logs logs={lead.logs ? lead.logs : null}/>
                       <a className="slds-button slds-button--neutral" onClick={e => {
                         dispatch(addAccount(lead.name, lead.phone, lead.logs));
                         dispatch(deleteLead(index));
@@ -54,7 +54,7 @@ const Leads = ({leads, dispatch}) => (
                       
                       <a className="slds-button slds-button--destructive" onClick={e => {
                         dispatch(deleteLead(index))
-                      } }>Delete</a>
+                      }}>Delete</a>
                     </div>
                   </td>
                 </tr>

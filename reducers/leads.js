@@ -4,8 +4,8 @@ let dummyData = {
   name: "1st name",
   phone: "123-456-7890",
   logs: [
-    { log: "this is a test log", time: "22 Feb" },
-    { log: "this is a test log 2", time: "10 Mar" }
+    { log: "this is a test log ", time: "10/6/2016 @ 2:15:35" },
+    { log: "this is a test log 2", time: "13/6/2016 @ 6:45:22" }
   ]
 };
 

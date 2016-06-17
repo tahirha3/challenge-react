@@ -3,11 +3,31 @@ import React from 'react'
 let Logs = React.createClass({
   getInitialState: function () {
         return {
-            toggle: 0
+            toggle: 0,
+            logs:this.props.logs,
+            log:''
         };
+    },
+    handleChange(e) {
+      this.setState({ log: e.target.value });
+      if(e.keyCode == 13){
+        this.newLog();
+      }
     },
     toggle:function () {
         this.setState({ toggle: ~this.state.toggle });
+    },
+    newLog:function () {
+      var currentdate = new Date(); 
+      var datetime = currentdate.getDate() + "/"
+                      + (currentdate.getMonth()+1)  + "/" 
+                      + currentdate.getFullYear() + " @ "  
+                      + currentdate.getHours() + ":"  
+                      + currentdate.getMinutes() + ":" 
+                      + currentdate.getSeconds();
+      this.props.logs.push({ log: this.state.log, time: datetime });
+      this.setState({ log: ''});
+      this.setState({ logs: this.props.logs });
     },
   render() {
     return (
@@ -16,25 +36,34 @@ let Logs = React.createClass({
         <div className={this.state.toggle ? 'slds-modal slds-fade-in-open' : 'slds-modal slds-fade-in-open slds-hide'} role="dialog">
           <div className="slds-modal__container">
             <div className="slds-modal__header">
-              <h2 className="slds-text-heading--medium"> Call Logs</h2>
+              <h2 className="slds-text-heading--medium">Call Logs</h2>
             </div>
             <div className="slds-modal__content slds-p-around--medium">
+                <div className="slds-publisher slds-publisher--discussion slds-m-around--medium">
+                  <input type="text" value={this.state.log} onChange={ 
+                    this.handleChange } onKeyUp={this.handleChange} className="slds-publisher__input slds-textarea slds-text-longform" placeholder="Enter Log here…"></input>
+                  <div className="slds-publisher__actions slds-grid slds-grid--align-spread">
+                    <button className="slds-button slds-button--brand" onClick={e => {
+                        this.newLog();
+                      }}>Log</button>
+                </div>
+            </div>
+            
               <div>
                 <ul>
-                  {this.props.logs ? this.props.logs.map((item, index) =>
+                  {this.state.logs ? this.state.logs.map((item, index) =>
                     <li key={index}>
-                      <span className="slds-assistive-text">Call</span>
                       <div className="slds-media">
                         <div className="slds-media__body">
-                          <div className="slds-media slds-media--timeline slds-timeline__media--call">
+                          <div className="slds-media ">
                             <div className="slds-media__figure slds-timeline__icon">
                               <div className="slds-icon_container">
                                 <svg className="slds-icon slds-icon--small slds-icon-standard-log-a-call">
                                 </svg>
                               </div>
                             </div>
-                            <div className="slds-media__body">
-                              <p className="slds-truncate">{item.log}</p>
+                            <div className="slds-media__body" style={{ whiteSpace: 'pre-wrap' }} >
+                              <p className="">{item.log}</p>
                               <ul className="slds-list--horizontal slds-wrap">
                               </ul>
                             </div>
